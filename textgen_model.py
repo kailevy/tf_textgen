@@ -38,6 +38,10 @@ class TextGen(Model):
         cells = tf.nn.rnn_cell.MultiRNNCell([tf.nn.rnn_cell.LSTMCell(self.config.hidden_dim) for _ in range(self.config.layer_num)])
         x = self.input_placeholder
         #why state/ output
+        print ('cells', cells)
+        print ('x', x)
+        x = tf.cast(x,tf.float32)
+        x = tf.expand_dims(x, axis = 2)
         output, state = tf.nn.dynamic_rnn(cells, x, dtype=tf.float32)
         preds = tf.sigmoid(output)
         return preds

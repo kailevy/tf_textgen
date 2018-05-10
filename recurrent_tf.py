@@ -22,6 +22,7 @@ class Config:
     hidden_dim = 500
     layer_num = 2
     clip_gradients = False
+    max_grad_norm = 5.0
 
     def __init__(self, vocab_size):
         self.vocab_size = vocab_size
